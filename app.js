@@ -14,6 +14,8 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
+app.set('view engine', 'ejs')
+
 // URL Routing
 app.get('/', function(req,res){
   //res.send("<h1>Hello</h1>")
@@ -30,8 +32,6 @@ app.get('/main', function(req,res){
 app.post('/search', function(req,res){
   //res.send("post response")
   // console.log(req.body.key)
-     	res.send("You want to know about " + req.body.key)
-  //res.render('/views/search.ejs', {'key' : req.body.key}
+  // res.send("You want to know about " + req.body.key)
+  res.render('search.ejs', {'key' : req.body.key});
 })
-
-app.set('view engine', 'ejs')
